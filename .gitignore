@@ -1,0 +1,59 @@
+# ============================================================================
+# PO-AKI handover CDSS — anything that could hold a patient row is ignored.
+# The three aggregate tables under outputs/paper_assets/ are the only data
+# files this repository ships, and they are explicitly re-included below.
+# ============================================================================
+
+# ---- raw databases (never commit; obtain via PhysioNet / VitalDB) ----
+data/
+raw/
+*.vital
+*.edf
+
+# ---- row-level intermediates ----
+*.parquet
+*.npy
+*.npz
+*.feather
+*.pkl
+*.h5
+*.csv.gz
+*.csv.zip
+cohort_*.csv
+vitals_*.csv
+oof_*.csv
+windows_*.csv
+features_*.csv
+*_pred_*.csv
+*_meta.csv
+
+# ---- derived output tree (regenerate locally) ----
+outputs/*
+!outputs/paper_assets/
+outputs/paper_assets/*
+!outputs/paper_assets/paper_tables_summary.csv
+!outputs/paper_assets/table1_baseline.csv
+!outputs/paper_assets/stat_tests_npj.csv
+
+# ---- demo scratch space ----
+demo/data/
+demo_run/
+
+# ---- editor / OS / backups ----
+*.bak
+*.bak_*
+*.bak.*
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/

@@ -1,0 +1,14 @@
+﻿section,characteristic,INSPIRE,eICU-CRD,VitalDB,note
+Cohort,"Patients, n","9,543","3,597","3,000",
+Demographics,"Age, years, mean ± SD",60.7 ± 15.0,64.8 ± 15.0,58.0 ± 14.3,
+Demographics,"Age, years, median [IQR]",65.0 [55.0–70.0],66.0 [56.0–76.0],59.0 [49.0–68.0],reported both ways; normality tests reject at this sample size
+Demographics,"Male, n (%)","5,558 (58.2%)","2,033 (56.5%)","1,516 (50.5%)",
+Monitoring,"Follow-up, hours, median [IQR]",48.6 [28.6–96.5],52.0 [34.3–92.1],43.0 [0.0–120.3],"effective ICU follow-up horizon, censored at 7 days"
+Renal,"Baseline SCr, mg/dL, median [IQR]",0.8 [0.7–1.1],1.0 [0.8–1.2],0.8 [0.7–0.9],
+Renal,"Baseline SCr source: Tier 1 (true pre-ICU, [-180 d, 0 h))","8,650 (90.6%)","2,092 (58.2%)","1,913 (63.8%)",
+Renal,"Baseline SCr source: Tier 2 (first ICU SCr, 0–6 h)",44 (0.5%),585 (16.3%),"1,070 (35.7%)",
+Renal,Baseline SCr source: Tier 3 (estimated / lowest),849 (8.9%),920 (25.6%),17 (0.6%),
+Outcome,"PO-AKI, KDIGO stage 1–3, n (%)","2,263 (23.7%)",701 (19.5%),199 (6.6%),
+Outcome,"PO-AKI, KDIGO stage 2–3, n (%)","1,024 (10.7%)",367 (10.2%),61 (2.0%),
+Analytic sample,"Patients contributing ≥1 window, n","4,403","2,437",Pending validation,
+Analytic sample,"Total 12-h windows, n","151,191","93,429",Pending validation,1-h step; windows require ≥50% channel observation

@@ -1,0 +1,98 @@
+﻿table,row_label,metric,value,unit,note
+A,LightGBM,AUROC (mean±SD),0.7463 ± 0.0392,,n_folds=10
+A,LightGBM,AUPRC,0.3896,,
+A,LightGBM,Brier,0.0809,,
+A,MLP,AUROC (mean±SD),0.7090 ± 0.0318,,n_folds=10
+A,MLP,AUPRC,0.2772,,
+A,MLP,Brier,0.0859,,
+A,Logistic regression,AUROC (mean±SD),0.6771 ± 0.0312,,n_folds=10
+A,Logistic regression,AUPRC,0.1588,,
+A,Logistic regression,Brier,0.2140,,
+A,KNN,AUROC (mean±SD),0.6744 ± 0.0395,,n_folds=10
+A,KNN,AUPRC,0.1997,,
+A,KNN,Brier,0.1273,,
+A,RETAIN,AUROC (mean±SD),0.6570 ± 0.0273,,n_folds=10
+A,RETAIN,AUPRC,0.1431,,
+A,RETAIN,Brier,0.2271,,
+A,GRU (DEWS),AUROC (mean±SD),0.6562 ± 0.0239,,n_folds=10
+A,GRU (DEWS),AUPRC,0.1426,,
+A,GRU (DEWS),Brier,0.2280,,
+A,MEWS-4,AUROC (mean±SD),0.4752 ± 0.0491,,n_folds=10
+A,MEWS-4,AUPRC,0.0839,,
+A,MEWS-4,Brier,0.0882,,
+A,Kruskal-Wallis (AUROC across models),H,47.25,,"p = 1.67e-08; k = 7 models, 10 folds each"
+B,"Track 1 (ICU 0–12 h, first window, t_end=12 h)",AUROC,0.7898,,n=4285 windows / 4285 patients
+B,"Track 1 (ICU 0–12 h, first window, t_end=12 h)",AUPRC,0.4743,,prevalence 15.24%
+B,"Track 1 (ICU 0–12 h, first window, t_end=12 h)",Median lead time (Youden),5.2,h,Youden-optimal threshold
+B,"Track 1 (ICU 0–12 h, first window, t_end=12 h)",Event recall @10% alarm budget,0.2535,,same alarm rate in both tracks
+B,"Track 1 (ICU 0–12 h, first window, t_end=12 h)",Sensitivity / Specificity (Youden),0.750 / 0.701,,
+B,"Track 2 (handover, t = [-4, +8), t_end=8 h)",AUROC,0.8273,,n=4285 windows / 4285 patients
+B,"Track 2 (handover, t = [-4, +8), t_end=8 h)",AUPRC,0.5578,,prevalence 13.89%
+B,"Track 2 (handover, t = [-4, +8), t_end=8 h)",Median lead time (Youden),8.7,h,Youden-optimal threshold
+B,"Track 2 (handover, t = [-4, +8), t_end=8 h)",Event recall @10% alarm budget,0.2833,,same alarm rate in both tracks
+B,"Track 2 (handover, t = [-4, +8), t_end=8 h)",Sensitivity / Specificity (Youden),0.682 / 0.841,,
+C,"A  All eICU, KDIGO stage 1–3 (zero-shot)",AUROC,0.5975,,n=93429 windows / 2437 patients
+C,"A  All eICU, KDIGO stage 1–3 (zero-shot)",AUPRC,0.1084,,prevalence 7.88%
+C,"A  All eICU, KDIGO stage 1–3 (zero-shot)",Brier,0.2291,,
+C,"A  All eICU, KDIGO stage 1–3 (zero-shot)",Event recall,0.8932,,"patient-level, >=1 true alarm in 24 h before onset"
+C,"A  All eICU, KDIGO stage 1–3 (zero-shot)",Median lead time,19.1,h,
+C,"B  eICU, true pre-operative baseline (baseline_source=1)",AUROC,0.5919,,n=56552 windows / 1462 patients
+C,"B  eICU, true pre-operative baseline (baseline_source=1)",AUPRC,0.1091,,prevalence 8.14%
+C,"B  eICU, true pre-operative baseline (baseline_source=1)",Brier,0.2320,,
+C,"B  eICU, true pre-operative baseline (baseline_source=1)",Event recall,0.9078,,"patient-level, >=1 true alarm in 24 h before onset"
+C,"B  eICU, true pre-operative baseline (baseline_source=1)",Median lead time,20.3,h,
+C,"C  eICU, moderate-to-severe (KDIGO stage 2–3)",AUROC,0.5830,,n=89912 windows / 2386 patients
+C,"C  eICU, moderate-to-severe (KDIGO stage 2–3)",AUPRC,0.0326,,prevalence 2.45%
+C,"C  eICU, moderate-to-severe (KDIGO stage 2–3)",Brier,0.2274,,
+C,"C  eICU, moderate-to-severe (KDIGO stage 2–3)",Event recall,0.8564,,"patient-level, >=1 true alarm in 24 h before onset"
+C,"C  eICU, moderate-to-severe (KDIGO stage 2–3)",Median lead time,16.0,h,
+C,"D  eICU, 5% target Platt calibration",AUROC,0.5971,,n=89058 windows / 2315 patients
+C,"D  eICU, 5% target Platt calibration",AUPRC,0.1104,,prevalence 8.01%
+C,"D  eICU, 5% target Platt calibration",Brier,0.0739,,
+C,"D  eICU, 5% target Platt calibration",Event recall,0.8970,,"patient-level, >=1 true alarm in 24 h before onset"
+C,"D  eICU, 5% target Platt calibration",Median lead time,19.4,h,
+D,rank 1: age,mean |SHAP|,0.3840,,
+D,rank 2: MAP_1-12h_Min,mean |SHAP|,0.1756,,
+D,rank 3: SI_1-12h_Min,mean |SHAP|,0.1546,,
+D,rank 4: PP_1-12h_Max,mean |SHAP|,0.1534,,
+D,rank 5: PP_1-12h_Min,mean |SHAP|,0.1418,,
+D,rank 6: HR_1-12h_Min,mean |SHAP|,0.1351,,
+D,rank 7: RR_1-12h_Mean,mean |SHAP|,0.1347,,
+D,rank 8: DBP_1-12h_Max,mean |SHAP|,0.1204,,
+D,rank 9: HR_1-12h_Max,mean |SHAP|,0.1081,,
+D,rank 10: DBP_1-12h_Min,mean |SHAP|,0.1073,,
+D,rank 11: Temp_1-12h_Min,mean |SHAP|,0.1024,,
+D,rank 12: SI_1-12h_Max,mean |SHAP|,0.0907,,
+D,rank 13: DBP_7-12h_Max,mean |SHAP|,0.0866,,
+D,rank 14: MAP_1-12h_Max,mean |SHAP|,0.0841,,
+D,rank 15: PulsePressure_Ratio,mean |SHAP|,0.0800,,
+C-cooling,high_sensitivity (sens=0.85),Event recall — raw,0.9538,,threshold 0.0545
+C-cooling,high_sensitivity (sens=0.85),False alarms per patient — raw,20.45,/patient,
+C-cooling,high_sensitivity (sens=0.85),False alarms per patient-day — raw,12.53,/patient-day,
+C-cooling,high_sensitivity (sens=0.85),Median lead time — raw,9.75,h,
+C-cooling,high_sensitivity (sens=0.85),Window FAR (1−PPV) — raw,0.8890,,prevalence-dependent by definition
+C-cooling,high_sensitivity (sens=0.85),Event recall — EWMA(0.5) + 6 h cooldown,0.9457,,threshold 0.0545
+C-cooling,high_sensitivity (sens=0.85),False alarms per patient — EWMA(0.5) + 6 h cooldown,3.71,/patient,
+C-cooling,high_sensitivity (sens=0.85),False alarms per patient-day — EWMA(0.5) + 6 h cooldown,2.27,/patient-day,
+C-cooling,high_sensitivity (sens=0.85),Median lead time — EWMA(0.5) + 6 h cooldown,9.62,h,
+C-cooling,high_sensitivity (sens=0.85),Window FAR (1−PPV) — EWMA(0.5) + 6 h cooldown,0.8885,,prevalence-dependent by definition
+C-cooling,balanced_youden (youden=0),Event recall — raw,0.8451,,threshold 0.2119
+C-cooling,balanced_youden (youden=0),False alarms per patient — raw,8.67,/patient,
+C-cooling,balanced_youden (youden=0),False alarms per patient-day — raw,5.32,/patient-day,
+C-cooling,balanced_youden (youden=0),Median lead time — raw,8.50,h,
+C-cooling,balanced_youden (youden=0),Window FAR (1−PPV) — raw,0.8285,,prevalence-dependent by definition
+C-cooling,balanced_youden (youden=0),Event recall — EWMA(0.5) + 6 h cooldown,0.8125,,threshold 0.2119
+C-cooling,balanced_youden (youden=0),False alarms per patient — EWMA(0.5) + 6 h cooldown,1.81,/patient,
+C-cooling,balanced_youden (youden=0),False alarms per patient-day — EWMA(0.5) + 6 h cooldown,1.11,/patient-day,
+C-cooling,balanced_youden (youden=0),Median lead time — EWMA(0.5) + 6 h cooldown,8.50,h,
+C-cooling,balanced_youden (youden=0),Window FAR (1−PPV) — EWMA(0.5) + 6 h cooldown,0.8335,,prevalence-dependent by definition
+C-cooling,high_specificity (spec=0.92),Event recall — raw,0.6522,,threshold 0.4304
+C-cooling,high_specificity (spec=0.92),False alarms per patient — raw,2.84,/patient,
+C-cooling,high_specificity (spec=0.92),False alarms per patient-day — raw,1.74,/patient-day,
+C-cooling,high_specificity (spec=0.92),Median lead time — raw,8.38,h,
+C-cooling,high_specificity (spec=0.92),Window FAR (1−PPV) — raw,0.7103,,prevalence-dependent by definition
+C-cooling,high_specificity (spec=0.92),Event recall — EWMA(0.5) + 6 h cooldown,0.5897,,threshold 0.4304
+C-cooling,high_specificity (spec=0.92),False alarms per patient — EWMA(0.5) + 6 h cooldown,0.64,/patient,
+C-cooling,high_specificity (spec=0.92),False alarms per patient-day — EWMA(0.5) + 6 h cooldown,0.39,/patient-day,
+C-cooling,high_specificity (spec=0.92),Median lead time — EWMA(0.5) + 6 h cooldown,8.42,h,
+C-cooling,high_specificity (spec=0.92),Window FAR (1−PPV) — EWMA(0.5) + 6 h cooldown,0.7234,,prevalence-dependent by definition

@@ -1,0 +1,28 @@
+# PO-AKI handover CDSS — exact environment used for the manuscript
+# Python 3.13.14 (see outputs/paper_assets/env_versions.txt in the submission package)
+#
+# Install:
+#   python -m venv .venv && . .venv/bin/activate     # Windows: .venv\Scripts\activate
+#   pip install -r requirements.txt
+#
+# The pipeline runs on CPU only; no GPU is required.
+
+# ---- core: cohort build, windowing, feature engineering ----
+numpy==2.5.5
+pandas==3.1.1
+scipy==1.18.1
+scikit-learn==1.9.1
+pyarrow==26.0.1
+
+# ---- modelling (04_train_evaluate.py) ----
+lightgbm==4.7.0
+torch==2.15.0            # CPU wheel: pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+pytorch-tabnet==4.1.0    # only needed for --only-tabnet (not part of the 10-fold main results)
+
+# ---- explanation and figures ----
+shap==0.54.1
+matplotlib==3.11.2
+pillow==13.0.0           # 300 DPI RGB re-save of every figure
+
+# ---- optional ----
+pyyaml>=6.0              # only if you prefer editing configs/default.yaml over CLI flags

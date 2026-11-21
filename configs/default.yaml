@@ -1,0 +1,42 @@
+# PO_AKI_CDSS 全局配置
+# 字段名与各模块的构造参数一一对应，改这里即可，不要改代码。
+
+preprocess:
+  window_h: 12              # 输入窗长度（小时）
+  step_h: 1                 # 滑动步长
+  horizon_h: 24             # 预测视界：未来 24h 内是否发病
+  scaler: fixed             # fixed | minmax | robust | zscore（fixed = 跨库统一生理极值标尺，与 02 的 CLI 默认一致）
+  min_observed_frac: 0.5    # 窗口内真实观测占比下限，低于此值丢弃
+  max_hours: 168            # 随访上限，避免超长住院主导
+  clip_scaled: null         # 默认不截断：保留极端低灌注峰值；GI 的 [0,1] 截断在模块3内部单独施加
+  unscaled_channels: []     # 不归一化的通道，如 [MEWS-4, SI] 以保留临床量纲
+
+features:
+  # 6 个子窗（1-based，t1 = 窗口最早 1 小时）
+  subwindows: ["1-4h", "5-8h", "9-12h", "1-6h", "7-12h", "1-12h"]
+  stats: [Mean, Median, Min, Max, Std, Skew, IQR, Slope]
+  gini: [GI, GV, DGI]       # 固定用 1-12h 全窗
+  gini_clip: [0.0, 1.0]     # 仅基尼分支截断，保证 GI/GV ∈ [0,1]
+  nan_policy: zero          # TabNet 不能吃 NaN；LightGBM 可用 keep
+
+cohort:
+  age_min: 18
+  age_max: 99
+  los_floor_h: 24           # 入组门槛。**不要**按 145h 剔除阴性（存活时间偏倚）
+  pre_icu_guard_h: 12       # 入 ICU 前 12h 内已 AKI/死亡 -> 排除
+  baseline_rule: last       # last | min | median（术前多次 SCr 时取哪个）
+  baseline_source: {1: 'pre_icu[-180d,0h)', 2: 'icu_first[0h,6h]', 3: 'estimated_lowest'}
+  baseline_lookback_d: 180  # 术前基线回溯窗口（与代码默认一致；KDIGO 的 7 天是判据窗口，不是回溯窗）
+  max_followup_h: 168
+  uo_min_coverage: 0.75     # 尿量窗口记录覆盖率下限
+
+cv:
+  n_splits: 10
+  seed: 42
+  group_key: patient_id     # 必须按患者分组，禁止跨折
+  weights_grid: [10, 25, 50, 100]
+  early_stop_metric: val_auprc
+
+evaluation:
+  thresholds: [0.05, 0.10, 0.15, 0.20, 0.30, 0.50]
+  bootstrap_n: 1000         # CI 按患者重抽样
